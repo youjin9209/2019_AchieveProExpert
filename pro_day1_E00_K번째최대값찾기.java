@@ -14,6 +14,11 @@ K번째 최댓값을 출력한다
 출력
 7
 */
+/*
+딱 K까지만 정렬하면 된다. / 들어오는 숫자랑 sorted[K]랑 비교해줘서 큰것만 넣어준다음에 버블소트처럼 정렬!
+시간복잡도 : O(N*K) 
+-> N개 만큼 K(최대) 돌아주면 됨.
+*/
 public class pro_day1_E00 {
 
 	public static void main(String[] args) {
