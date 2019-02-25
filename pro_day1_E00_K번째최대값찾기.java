@@ -20,5 +20,28 @@ public class pro_day1_E00 {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		int K = sc.nextInt();
+		int[] arr = new int[N+1]; // input 받아올 배열 
+		int[] sorted = new int[K+1]; // 내림차순 배열 
+		for (int i = 1; i <= N; i++) {
+			arr[i] = sc.nextInt();
+		}
+		// 1) 맨처음 숫자만 초기에 넣어준다 
+		sorted[1] = arr[1];
+		for (int i = 2; i <= N; i++) {
+			int num = arr[i];
+			// 2) sorted[K] 와 arr[] 숫자와 비교 -> 클경우 sorted[K] 에 넣기 
+			if (num > sorted[K])
+				sorted[K] = num;
+			// 3) sorted[] 내림차순 정렬 
+			for (int k = K; k >= 2; k--) {
+				if (sorted[k] > sorted[k-1]) { // swap 
+					int temp = sorted[k-1];
+					sorted[k-1] = sorted[k];
+					sorted[k] = temp;
+				}
+					 
+			}
+		}
+		System.out.println(sorted[K]);
 	}
 }
