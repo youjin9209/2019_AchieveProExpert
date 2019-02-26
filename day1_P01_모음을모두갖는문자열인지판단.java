@@ -20,31 +20,22 @@ public class day1_P01_모음을모두갖는문자열인지판단 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
-		String[] str_temp = new String[N];
-		String[] str = new String[N];
+		char[] arr = new char[N];
 		sc.nextLine();
-		str_temp = sc.nextLine().split("");
-		// (1) 중복제거 
-		str[0] = str_temp[0];
-		int str_idx = 1;
-		for (int idx = 1; idx < N; idx++) {
-			if (!str[str_idx-1].equals(str_temp[idx])) {
-				str[str_idx++] = str_temp[idx];
+		arr = sc.nextLine().toCharArray();
+		boolean[] alphabet = new boolean[26]; // 모음 check 하기 위함 
+		int result = 0;
+		for (int i = 0; i < N; i++) {
+			int idx = arr[i] - 'a';
+			if (!alphabet[idx]) { // 중복 체크 방지 
+				alphabet[idx] = true;
+				if (idx == 0 || idx == 4 || idx == 8 || idx == 14 || idx == 20)
+					result += 1;
 			}
 		}
-		// (2) 모음 다 포함했는지 check 
-		int cnt = 0;
-		String result = "NO"; 
-		for (int i = 0; i < str_idx; i++) {
-			if (str[i].equals("a") || str[i].equals("e") || str[i].equals("i") || str[i].equals("o") || str[i].equals("u"))
-				cnt += 1;
-			if (i >= 4) {
-				if (cnt == 5) {
-					result = "YES";
-					break;
-				}
-			}
-		}
-		System.out.println(result);
+		if (result == 5)
+			System.out.println("YES");
+		else
+			System.out.println("NO");
 	}
 }
