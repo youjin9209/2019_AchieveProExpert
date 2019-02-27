@@ -18,9 +18,10 @@ N개의 정수로 이루어진 배열 A가 주어질 때, 구간합으로 가능
 2 3 -1 4 
 예제 출력 
 7
- 
 */
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 public class day1_P03_유일한구간합의개수 {
 
@@ -28,12 +29,14 @@ public class day1_P03_유일한구간합의개수 {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		int[] a = new int[N];
+		// 1) 중복허용하지 않기 위해 set 사용 
 		Set<Integer> s = new HashSet<Integer>();
 		for (int i = 0; i < N; i++) {
 			int num = sc.nextInt();
 			a[i] = num;
-			s.add(num);
+			s.add(num); // 구간 1인것은 미리 다 넣어준다 
 		}
+		// 2) 연속합 구하기 
 		for (int i = 0; i < N-1; i++) {
 			int sum = a[i];
 			for (int j = i+1; j < N; j++) {
@@ -42,6 +45,5 @@ public class day1_P03_유일한구간합의개수 {
 			}
 		}
 		System.out.println(s.size());
-		
 	}
 }
