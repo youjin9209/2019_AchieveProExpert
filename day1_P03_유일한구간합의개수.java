@@ -26,6 +26,22 @@ public class day1_P03_유일한구간합의개수 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		int N = sc.nextInt();
+		int[] a = new int[N];
+		Set<Integer> s = new HashSet<Integer>();
+		for (int i = 0; i < N; i++) {
+			int num = sc.nextInt();
+			a[i] = num;
+			s.add(num);
+		}
+		for (int i = 0; i < N-1; i++) {
+			int sum = a[i];
+			for (int j = i+1; j < N; j++) {
+				sum += a[j];
+				s.add(sum);
+			}
+		}
+		System.out.println(s.size());
 		
 	}
 }
