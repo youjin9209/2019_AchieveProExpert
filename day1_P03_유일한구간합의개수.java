@@ -1,4 +1,7 @@
 package Day1;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 /* 유일한 구간합의 개수 
 문제 
 N개의 정수로 이루어진 배열 A가 주어진다. 여기에서 구간합이란, 배열 A의 특정 연속된 구간의 합을 의미한다. 
@@ -18,10 +21,9 @@ N개의 정수로 이루어진 배열 A가 주어질 때, 구간합으로 가능
 2 3 -1 4 
 예제 출력 
 7
+ 
 */
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class day1_P03_유일한구간합의개수 {
 
@@ -29,21 +31,32 @@ public class day1_P03_유일한구간합의개수 {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();
 		int[] a = new int[N];
-		// 1) 중복허용하지 않기 위해 set 사용 
-		Set<Integer> s = new HashSet<Integer>();
+		ArrayList<Integer> sortedArr = new ArrayList<Integer>();
+		ArrayList<Integer> uniqueArr = new ArrayList<Integer>();
 		for (int i = 0; i < N; i++) {
 			int num = sc.nextInt();
 			a[i] = num;
-			s.add(num); // 구간 1인것은 미리 다 넣어준다 
+			sortedArr.add(num);
 		}
-		// 2) 연속합 구하기 
+		// 1) 구간합 넣기 
 		for (int i = 0; i < N-1; i++) {
 			int sum = a[i];
 			for (int j = i+1; j < N; j++) {
 				sum += a[j];
-				s.add(sum);
+				sortedArr.add(sum);
 			}
 		}
-		System.out.println(s.size());
+		Collections.sort(sortedArr);
+		int len = sortedArr.size();
+		uniqueArr.add(sortedArr.get(0));
+		int uniqueIdx = 1;
+		// 2) 정렬된 상태에서 중복제거 
+		for(int i = 1; i < len; i++) {
+			if (uniqueArr.get(uniqueIdx-1) != sortedArr.get(i)) {
+				uniqueArr.add(sortedArr.get(i));
+				uniqueIdx++;
+			}
+		}
+		System.out.println(uniqueIdx);
 	}
 }
