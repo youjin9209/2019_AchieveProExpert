@@ -51,7 +51,7 @@ public class pro_day1_E01 {
 		Arrays.sort(sorted);
 		myUnique[0] = sorted[0];
 		myUnique_inx++;
-		// (2) 중복 제거 
+		// (2) 졍렬된 상태에서 중복 제거 
 		for (int i = 1; i < sorted_inx; i++) {
 		    if (myUnique[myUnique_inx-1] != sorted[i]) {
 		      myUnique[myUnique_inx++] = sorted[i];
