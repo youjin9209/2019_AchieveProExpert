@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Scanner;
 /* Hashing : KEY-VALUE STORE.
- * 구현 : Key를 배열의 Index로 변환한다. (by Binarh Search) / 효과 : 값을 한번에 찾을 수 있게 된다.   
+ * 구현 : Key를 배열의 Index로 변환한다. (by Binarh Search : 구간을 찾는거니까 크기는 중요하지 않다. 찌부되도 상관없음) / 효과 : 값을 한번에 찾을 수 있게 된다.   
  * 제한된 공간을 이용하여 자료를 (운좋으면 ) 단 한번의 연산으로 찾는 방법 
  * Hashing 의 핵심 : 공간 축소. (for data storing) / 범위가 겁나게 넓은거를 쫙 줄인다. 배열의 Index로 !! 
 */
